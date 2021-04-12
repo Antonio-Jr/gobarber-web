@@ -18,7 +18,7 @@ import { useAuth } from '../../hooks/auth';
 interface ProfileFormData {
   name: string;
   email: string;
-  old_password?: String;
+  old_password?: number;
   password?: String;
   password_confirmation?: String;
 }
