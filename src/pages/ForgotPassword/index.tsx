@@ -4,7 +4,7 @@ import { FiLogIn, FiMail } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { useToast } from '../../hooks/toast';
 import getValidationErrors from '../../utils/getValidationErros';
@@ -23,7 +23,6 @@ const ForgotPassword: React.FunctionComponent = () => {
   const formRef = useRef<FormHandles>(null);
 
   const { addToast } = useToast();
-  const history = useHistory();
 
   const handleSubmit = useCallback(
     async (data: ForgotPasswordFormData) => {
@@ -51,8 +50,6 @@ const ForgotPassword: React.FunctionComponent = () => {
           description:
             'Enviamos um e-mail de recuperação de senha. Por favor, verifique sua caixa de entrada.',
         });
-
-        // history.push('/dashboard');
       } catch (error) {
         if (error instanceof Yup.ValidationError) {
           const errors = getValidationErrors(error);
@@ -71,7 +68,7 @@ const ForgotPassword: React.FunctionComponent = () => {
         setLoading(false);
       }
     },
-    [addToast, useState, history],
+    [addToast],
   );
 
   return (
